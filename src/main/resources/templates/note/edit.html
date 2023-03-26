@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit note</title>
+</head>
+<body>
+    <h1>Edit note</h1>
+    <form th:action="@{/note/edit/{id}(id = ${noteById.getId()})}" method="post">
+        <label for="title">Title</label> <br>
+        <input type="text" name = "title" id="title" th:value="${noteById.getTitle()}"> <br>
+        <label for="content">Content</label> <br>
+        <input type="text" name = "content" id="content" th:value="${noteById.getContent()}"> <br><br>
+        <button type="submit">Edit</button>
+    </form>
+</body>
+</html>

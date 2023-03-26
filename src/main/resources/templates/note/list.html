@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>All notes</title>
+</head>
+<body>
+    <h1 th:text="'All notes: ' + ${noteList.size()}"></h1>
+    <table border="1">
+        <thead>
+        <tr>
+            <th>Title</th>
+            <th>Content</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr th:each="note : ${noteList}">
+                <td><span th:text="${note.value.getTitle()}"> </span></td>
+                <td><span th:text="${note.value.getContent()}"> </span></td>
+                <td>
+                    <form th:action="@{/note/edit/{id}(id = ${note.value.getId()})}">
+                        <button type="submit">Edit</button>
+                    </form>
+                </td>
+                <td>
+                    <form th:action="@{/note/delete/{id}(id = ${note.value.getId()})}" method="post">
+                        <button type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        </tbody>
+    </table></br>
+    <form action="/note/add">
+        <input type="submit" value="Add new note">
+    </form>
+</body>
+</html>
